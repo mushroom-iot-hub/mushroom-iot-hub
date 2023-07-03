@@ -1,5 +1,5 @@
 <!-- PROJECT LOGO -->
-# United Manufacturing Hub
+# Mushroom IoT Hub
 
 [![License: AGPL v3](https://img.shields.io/badge/License-Apache2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 [![Go Report Card](https://goreportcard.com/badge/github.com/united-manufacturing-hub/united-manufacturing-hub)](https://goreportcard.com/report/github.com/united-manufacturing-hub/united-manufacturing-hub)
