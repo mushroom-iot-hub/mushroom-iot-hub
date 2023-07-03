@@ -1,0 +1,166 @@
+# Copyright 2023 UMH Systems GmbH
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+{{if .Values._000_commonConfig.infrastructure.mqtt.enabled}}
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce
+  labels:
+    {{- include "mushroom-iot-hub.labels.hivemqce" . | nindent 4}}
+    app.kubernetes.io/component: "hivemqce"
+spec:
+  serviceName: {{include "mushroom-iot-hub.fullname" .}}-hivemqce
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "mushroom-iot-hub.labels.hivemqce" . | nindent 6}}
+      app.kubernetes.io/component: "hivemqce"
+  template:
+    metadata:
+      labels:
+        {{- include "mushroom-iot-hub.labels.hivemqce" . | nindent 8}}
+        app.kubernetes.io/component: "hivemqce"
+    spec:
+      volumes:
+        - name: hivemqce-mqtt-config
+          configMap:
+            name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-hive
+        - name: hivemqce-extension-config
+          configMap:
+            name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-extension
+        - name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-data
+          persistentVolumeClaim:
+            claimName: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-claim-data
+        - name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-extensions
+          persistentVolumeClaim:
+            claimName: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-claim-extensions
+        {{- if or .Values.mqtt_broker.service.mqtts.enabled .Values.mqtt_broker.service.wss.enabled}}
+        - name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-keystores
+          secret:
+            secretName: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-secret-keystore
+            optional: false
+        {{- end}}
+      initContainers:
+        - name: hivemqce-extension-init
+          image: {{.Values.mqtt_broker.initContainer.hivemqextensioninit.image.repository}}:{{.Values.mqtt_broker.initContainer.hivemqextensioninit.image.tag}}
+          imagePullPolicy: {{.Values.mqtt_broker.initContainer.hivemqextensioninit.image.pullPolicy}}
+          volumeMounts:
+            - mountPath: /opt/hivemq-ce-2022.1/extensions
+              name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-extensions
+          env:
+            - name: RBAC_ENABLED
+              {{- if .Values.mqtt_broker.rbacEnabled }}
+              value: "true"
+              {{- else }}
+              value: "false"
+              {{- end }}
+      containers:
+        - name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce
+          {{if .Values.mqtt_broker.image.tag}}
+          image: {{.Values.mqtt_broker.image.repository}}:{{.Values.mqtt_broker.image.tag}}
+          {{- else}}
+          image: {{.Values.mqtt_broker.image.repository}}:2022.1
+          {{end}}
+          imagePullPolicy: {{.Values.mqtt_broker.image.pullPolicy}}
+          env:
+            - name: HIVEMQ_ALLOW_ALL_CLIENTS
+              {{- if .Values.mqtt_broker.rbacEnabled }}
+              value: "false"
+              {{- else }}
+              value: "true"
+              {{- end }}
+            - name: JAVA_OPTS
+              value: "-Xmx750m -Xms750m"
+          resources:
+            limits:
+              cpu: {{.Values.mqtt_broker.resources.limits.cpu}}
+              memory: {{.Values.mqtt_broker.resources.limits.memory}}
+            requests:
+              cpu: {{.Values.mqtt_broker.resources.requests.cpu}}
+              memory: {{.Values.mqtt_broker.resources.requests.memory}}
+          volumeMounts:
+            - mountPath: /opt/hivemq-ce-{{.Values.mqtt_broker.image.tag}}/conf
+              name: hivemqce-mqtt-config
+              readOnly: true
+            - mountPath: /opt/hivemq-ce-{{.Values.mqtt_broker.image.tag}}/data
+              name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-data
+            - mountPath: /opt/hivemq-ce-{{.Values.mqtt_broker.image.tag}}/extensions
+              name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-extensions
+            - mountPath: /configs
+              name: hivemqce-extension-config
+              readOnly: true
+            {{- if or .Values.mqtt_broker.service.mqtts.enabled .Values.mqtt_broker.service.wss.enabled}}
+            - mountPath: /stores
+              name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-keystores
+              readOnly: true
+            {{- end}}
+          livenessProbe:
+            httpGet:
+              port: 9090
+              path: /heartbeat
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              port: 9090
+              path: /heartbeat
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
+          ports:
+            {{- if .Values.mqtt_broker.service.mqtt.enabled}}
+            - name: mqtt
+              containerPort: 1883
+              protocol: TCP
+            {{- end}}
+            {{- if .Values.mqtt_broker.service.mqtts.enabled}}
+            - name: mqtts
+              containerPort: 8883
+              protocol: TCP
+            {{- end}}
+            {{- if .Values.mqtt_broker.service.ws.enabled}}
+            - name: ws
+              containerPort: 8080
+              protocol: TCP
+            {{- end}}
+            {{- if .Values.mqtt_broker.service.wss.enabled}}
+            - name: wss
+              containerPort: 8443
+              protocol: TCP
+            {{- end}}
+            - name: prometheus
+              containerPort: 9399
+              protocol: TCP
+            - name: health
+              containerPort: 9090
+              protocol: TCP
+
+          lifecycle:
+            postStart:
+                exec:
+                    command: [
+                      "/bin/sh",
+                      "-c",
+                      "{{ if .Values.mqtt_broker.rbacEnabled }}cp /configs/credentials.xml /opt/hivemq-ce-{{.Values.mqtt_broker.image.tag}}/extensions/hivemq-file-rbac-extension/credentials.xml && {{end}} cp /configs/heartbeat.xml  /opt/hivemq-ce-{{.Values.mqtt_broker.image.tag}}/extensions/hivemq-heartbeat-extension/extension-config.xml && cp /configs/prometheus.properties /opt/hivemq-ce-{{.Values.mqtt_broker.image.tag}}/extensions/hivemq-prometheus-extension/prometheusConfiguration.properties"
+                    ]
+
+{{end}}

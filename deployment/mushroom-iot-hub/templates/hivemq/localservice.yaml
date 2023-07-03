@@ -1,0 +1,55 @@
+# Copyright 2023 UMH Systems GmbH
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+{{if .Values._000_commonConfig.infrastructure.mqtt.enabled}}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-local-service
+  labels:
+    app.kubernetes.io/name: hivemqce
+    app.kubernetes.io/instance: {{include "mushroom-iot-hub.fullname" .}}
+    app.kubernetes.io/managed-by: helm
+    app.kubernetes.io/component: "hivemqce"
+spec:
+  type: ClusterIP
+  ports:
+    {{- if .Values.mqtt_broker.service.mqtt.enabled }}
+    - port: {{ .Values.mqtt_broker.service.mqtt.port }}
+      targetPort: mqtt
+      protocol: TCP
+      name: mqtt
+    {{- end }}
+    {{- if .Values.mqtt_broker.service.mqtts.enabled }}
+    - port: {{ .Values.mqtt_broker.service.mqtts.port }}
+      targetPort: mqtts
+      protocol: TCP
+      name: mqtts
+    {{- end }}
+    {{- if .Values.mqtt_broker.service.ws.enabled }}
+    - port: {{ .Values.mqtt_broker.service.ws.port }}
+      targetPort: ws
+      protocol: TCP
+      name: ws
+    {{- end }}
+    {{- if .Values.mqtt_broker.service.wss.enabled }}
+    - port: {{ .Values.mqtt_broker.service.wss.port }}
+      targetPort: wss
+      protocol: TCP
+      name: wss
+    {{- end }}
+  selector:
+    {{- include "mushroom-iot-hub.labels.hivemqce" . | nindent 4}}
+{{end}}

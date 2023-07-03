@@ -1,0 +1,99 @@
+# Copyright 2023 UMH Systems GmbH
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+{{if .Values._000_commonConfig.dataprocessing.nodered.enabled}}
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{include "mushroom-iot-hub.fullname" .}}-nodered
+  labels:
+    {{- include "mushroom-iot-hub.labels.nodered" . | nindent 4}}
+spec:
+  serviceName: {{include "mushroom-iot-hub.fullname" .}}-nodered
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "mushroom-iot-hub.labels.nodered" . | nindent 6}}
+  template:
+    metadata:
+      labels:
+        {{- include "mushroom-iot-hub.labels.nodered" . | nindent 8}}
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsNonRoot: true
+        runAsUser: 1000
+      initContainers:
+
+        {{if .Values._000_commonConfig.dataprocessing.nodered.defaultFlows}}
+        - name: {{include "mushroom-iot-hub.fullname" .}}-nodered-init
+          image: busybox:1.28
+          command: ['sh', '-c', 'false | cp -ir /data/flows.default /data/flows.json 2>/dev/null']
+          volumeMounts:
+            - name: {{include "mushroom-iot-hub.fullname" .}}-nodered-data
+              mountPath: /data
+            - name: {{include "mushroom-iot-hub.fullname" .}}-nodered-flows
+              mountPath: /data/flows.default
+              subPath: nodered-flows
+        {{end}}
+
+      containers:
+      - name: {{include "mushroom-iot-hub.fullname" .}}-nodered
+        image: nodered/node-red:{{.Values.nodered.tag}}
+        ports:
+        - containerPort: 1880
+          name: nodered-ui
+        startupProbe:
+          periodSeconds: 10
+          failureThreshold: 30 # 30*periodSeconds (10) -> 300 seconds max startup time
+          httpGet:
+            path: /nodered
+            port: 1880
+        livenessProbe:
+          httpGet:
+            path: /nodered
+            port: 1880
+        readinessProbe:
+          httpGet:
+            path: /nodered
+            port: 1880
+        securityContext:
+          runAsUser: 1000
+        volumeMounts:
+        - name: {{include "mushroom-iot-hub.fullname" .}}-nodered-data
+          mountPath: /data
+        - name: {{include "mushroom-iot-hub.fullname" .}}-nodered-config
+          mountPath: /data/settings.js
+          subPath: nodered-config
+          readOnly: true
+        env:
+        {{range $ENV_NAME, $ENV_CONTENT := .Values.nodered.env | default dict}}
+        - name: {{$ENV_NAME}}
+          value: {{$ENV_CONTENT | quote}}
+        {{end}}
+        - name: TZ
+          value: {{.Values.nodered.timezone}}
+      volumes:
+      - name: {{include "mushroom-iot-hub.fullname" .}}-nodered-data
+        persistentVolumeClaim:
+          claimName: {{include "mushroom-iot-hub.fullname" .}}-nodered-claim
+      - name: {{include "mushroom-iot-hub.fullname" .}}-nodered-config
+        configMap:
+          name: {{include "mushroom-iot-hub.fullname" .}}-nodered-config
+      - name: {{include "mushroom-iot-hub.fullname" .}}-nodered-flows
+        configMap:
+          name: {{include "mushroom-iot-hub.fullname" .}}-nodered-flows
+{{end}}

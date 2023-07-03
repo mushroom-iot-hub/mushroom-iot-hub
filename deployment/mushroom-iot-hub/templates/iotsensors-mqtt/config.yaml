@@ -1,0 +1,58 @@
+# Copyright 2023 UMH Systems GmbH
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+{{if .Values._000_commonConfig.datasources.iotsensorsmqtt.enabled}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{include "mushroom-iot-hub.fullname" .}}-iotsensors-mqtt
+data:
+  config.json: |
+    {
+      "MQTT_BROKER": {
+      "SERVER_URL":"mqtt://mushroom-iot-hub-mqtt:1883",
+      "SERVER_USER": "IOTSENSORSMQTT",
+      "SERVER_PWD": {{.Values.iotsensorsmqtt.mqtt.password | quote}},
+      "SERVER_RETAIN": "true",
+      "SERVER_QOS": 1,
+      "CLIENT_ID": "IoTSensorsMQTT-Simulator",
+      "KEEP_ALIVE": 300, 
+      "RETRY_DELAY": 10,
+      "ROOT_TOPIC": "ia/raw/development/ioTSensors",
+      "SET_DELAY_BETWEEN_MESSAGES" : 15,
+      "RANDOMIZE_DELAY_BETWEEN_MESSAGES" : "true"
+    },    
+  
+    "SIMULATORS": [
+        {
+            "Name" : "Temperature",
+            "Mean" : 50.0,
+            "StandardDeviation" : 3.5
+        },
+        {
+            "Name" : "Pressure",
+            "Mean" : 80.0,
+            "StandardDeviation" : 9.7
+        },
+        {
+            "Name" : "Humidity",
+            "Mean" : 40.0,
+            "StandardDeviation" : 2.1
+        }
+    ]
+    }
+
+{{end}}

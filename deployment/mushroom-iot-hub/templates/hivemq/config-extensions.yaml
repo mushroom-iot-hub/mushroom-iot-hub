@@ -1,0 +1,153 @@
+# Copyright 2023 UMH Systems GmbH
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+---
+{{if .Values._000_commonConfig.infrastructure.mqtt.enabled}}
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{include "mushroom-iot-hub.fullname" .}}-hivemqce-extension
+data:
+  # https://github.com/hivemq/hivemq-file-rbac-extension
+  credentials.xml: |
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <file-rbac>
+        <users>
+            <user>
+                <name>FACTORYINPUT</name>
+                <password>{{.Values.factoryinput.mqtt.encryptedPassword}}</password>
+                <roles>
+                    <id>ia_read_write</id>
+                </roles>
+            </user>
+            <user>
+                <name>MQTT_KAFKA_BRIDGE</name>
+                <password>{{.Values.mqttkafkabridge.mqtt.encryptedPassword}}</password>
+                <roles>
+                    <id>ia_read_write</id>
+                </roles>
+            </user>
+            <user>
+                <name>MQTT_BRIDGE</name>
+                <password>{{.Values.mqttbridge.mqtt.encryptedPassword}}</password>
+                <roles>
+                    <id>ia_read_write</id>
+                </roles>
+            </user>
+            <user>
+                <name>SENSORCONNECT</name>
+                <password>{{.Values.sensorconnect.mqtt.encryptedPassword}}</password>
+                <roles>
+                    <id>ia_read_write</id>
+                </roles>
+            </user>
+            <user>
+                <name>IOTSENSORSMQTT</name>
+                <password>{{.Values.iotsensorsmqtt.mqtt.encryptedPassword}}</password>
+                <roles>
+                    <id>ia_raw</id>
+                </roles>
+            </user>
+            <user>
+                <name>PACKMLSIMULATOR</name>
+                <password>{{.Values.packmlmqttsimulator.env.mqtt.encryptedPassword}}</password>
+                <roles>
+                    <id>packmlsimulator</id>
+                </roles>
+            </user>
+            <user>
+                <name>node-red</name>
+                <password>{{.Values.nodered.mqtt.encryptedPassword}}</password>
+                <roles>
+                    <id>packmlsimulator</id>
+                    <id>umh_read_write</id>
+                    <id>ia_read_write</id>
+                </roles>
+            </user>
+            {{if .Values._000_commonConfig.infrastructure.mqtt.adminUser.enabled}}
+            <user>
+                <name>{{.Values._000_commonConfig.infrastructure.mqtt.adminUser.name}}</name>
+                <password>{{.Values._000_commonConfig.infrastructure.mqtt.adminUser.encryptedPassword}}</password>
+                <roles>
+                    <id>superuser</id>
+                </roles>
+            </user>
+            {{end}}
+        </users>
+        <roles>
+            <role>
+                <id>umh_read_write</id>
+                <permissions>
+                    <permission>
+                        <topic>umh/#</topic>
+                    </permission>
+                </permissions>
+            </role>
+            <role>
+                <id>ia_read_write</id>
+                <permissions>
+                    <permission>
+                        <topic>ia/#</topic>
+                    </permission>
+                </permissions>
+            </role>
+            <role>
+                <id>ia_raw</id>
+                <permissions>
+                    <permission>
+                        <topic>ia/raw/#</topic>
+                    </permission>
+                </permissions>
+            </role>
+            <role>
+                <id>packmlsimulator</id>
+                <permissions>
+                    <permission>
+                        <topic>{{.Values.packmlmqttsimulator.env.site}}/{{.Values.packmlmqttsimulator.env.area}}/{{.Values.packmlmqttsimulator.env.productionline}}/#</topic>
+                    </permission>
+                </permissions>
+            </role>
+            <role>
+                <id>superuser</id>
+                <permissions>
+                    <permission>
+                        <topic>#</topic>
+                        <topic>$dropped/#</topic>
+                        <topic>$expired/#</topic>
+                        <topic>$dead/#</topic>
+                    </permission>
+                </permissions>
+            </role>
+        </roles>
+    </file-rbac>
+
+
+  heartbeat.xml: |
+    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <heartbeat-extension-configuration>
+        <port>9090</port>
+        <bind-address>0.0.0.0</bind-address>
+        <path>/heartbeat</path>
+    </heartbeat-extension-configuration>
+
+
+
+  prometheus.properties: |
+    ip=0.0.0.0
+    port=9399
+    metric_path=/metrics
+
+
+{{end}}

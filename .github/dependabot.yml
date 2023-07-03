@@ -1,0 +1,156 @@
+# Copyright 2023 UMH Systems GmbH
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+version: 2
+updates:
+  - directory: /.github/workflows
+    package-ecosystem: github-actions
+    schedule:
+      interval: daily
+
+  - directory: /golang
+    labels:
+      - 'lang: go'
+    package-ecosystem: gomod
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/barcodereader
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/cameraconnect
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/factoryinput
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/factoryinsight
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/grafana-proxy
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/kafka-debug
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/kafka-init
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/kafka-to-blob
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/mqtt-bridge
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/mqtt-kafka-bridge
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/mqtt-to-blob
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/mqtt-to-postgresql
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /deployment/sensorconnect
+    labels:
+      - 'lang: docker'
+    package-ecosystem: docker
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /mqtt-to-blob
+    labels:
+      - 'lang: python'
+    package-ecosystem: pip
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /cameraconnect
+    labels:
+      - 'lang: python'
+    package-ecosystem: pip
+    schedule:
+      interval: daily
+    target-branch: main
+
+  - directory: /barcodereader
+    labels:
+      - 'lang: python'
+    package-ecosystem: pip
+    schedule:
+      interval: daily
+    target-branch: main
