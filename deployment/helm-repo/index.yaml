@@ -1,6 +1,6 @@
 apiVersion: v1
 entries:
-  united-manufacturing-hub:
+  mushroom-iot-hub:
   - apiVersion: v2
     appVersion: 0.9.14
     created: "2023-06-02T15:55:21.4963418+02:00"
@@ -21,17 +21,17 @@ entries:
       name: redpanda
       repository: https://charts.redpanda.com/
       version: 3.0.9
-    description: Transform manufacturing with UMH Systems united-manufacturing-hub
+    description: Transform manufacturing with UMH Systems mushroom-iot-hub
       Helm chart, simplifying access to powerful technology for engineers.
     digest: 2702f7dbb487fbb7346b4c156a936a69db12f6d12691bf1f23cdfb9b8cfbeb7a
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.14.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.9.tgz
     version: 0.9.14
   - apiVersion: v2
     appVersion: 0.9.13
@@ -57,17 +57,17 @@ entries:
       name: console
       repository: https://charts.redpanda.com/
       version: 0.5.6
-    description: Transform manufacturing with UMH Systems united-manufacturing-hub
+    description: Transform manufacturing with UMH Systems mushroom-iot-hub
       Helm chart, simplifying access to powerful technology for engineers.
     digest: 6a020b6ec4a8715f3c24d071be166166ebf29c613cd477b62c6918e4d1401677
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.13.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.13.tgz
     version: 0.9.13
   - apiVersion: v2
     appVersion: 0.9.12
@@ -93,17 +93,17 @@ entries:
       name: console
       repository: https://charts.redpanda.com/
       version: 0.5.6
-    description: Transform manufacturing with UMH Systems united-manufacturing-hub
+    description: Transform manufacturing with UMH Systems mushroom-iot-hub
       Helm chart, simplifying access to powerful technology for engineers.
     digest: a31ff5536ca136536d23d2c22c2a6e44bb13f397e11f8451122063992c5a9342
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.12.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.12.tgz
     version: 0.9.12
   - apiVersion: v2
     appVersion: 0.9.12-prerelease2
@@ -129,17 +129,17 @@ entries:
       name: console
       repository: https://charts.redpanda.com/
       version: 0.5.6
-    description: Transform manufacturing with UMH Systems united-manufacturing-hub
+    description: Transform manufacturing with UMH Systems mushroom-iot-hub
       Helm chart, simplifying access to powerful technology for engineers.
     digest: c61947c5149b3cb04bf6696c0ceb06602d99f41f87e72530f1c5573b161535ba
-    home: https://0-9-12-prerelease2.united-manufacturing-hub.pages.dev
+    home: https://0-9-12-prerelease2.mushroom-iot-hub.pages.dev
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.12-prerelease2.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.12-prerelease2.tgz
     version: 0.9.12-prerelease2
   - apiVersion: v2
     appVersion: 0.9.12-prerelease1
@@ -165,18 +165,17 @@ entries:
       name: console
       repository: https://charts.redpanda.com/
       version: 0.5.6
-    description: Transform manufacturing with UMH Systems united-manufacturing-hub
+    description: Transform manufacturing with UMH Systems mushroom-iot-hub
       Helm chart, simplifying access to powerful technology for engineers.
     digest: 5158756dfd0fa1fa548d88a053b991cecb86fd47e07adab06fbb5cfa6ca6cd84
     home: https://v0-9-12-prerelease1.united-manufacturing-hub.pages.dev
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://v0-9-12-prerelease2.united-manufacturing-hub.pages.dev/united-manufacturing-hub-0.9.12-prerelease1.tgz
-    version: 0.9.12-prerelease1
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.11.tgz
   - apiVersion: v2
     appVersion: 0.9.11
     created: "2023-06-02T15:55:21.4234999+02:00"
@@ -209,17 +208,17 @@ entries:
       name: console
       repository: https://dl.redpanda.com/public/console/helm/charts/
       version: 0.3.1
-    description: Transform manufacturing with UMH Systems united-manufacturing-hub
+    description: Transform manufacturing with UMH Systems mushroom-iot-hub
       Helm chart, simplifying access to powerful technology for engineers.
     digest: 9164c269a717e39bf4155e3d524e4a9e148fc4f66fe132025ddcaa30db0637aa
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.11.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.11.tgz
     version: 0.9.11
   - apiVersion: v2
     appVersion: 0.9.10
@@ -253,17 +252,17 @@ entries:
       name: console
       repository: https://dl.redpanda.com/public/console/helm/charts/
       version: 0.3.1
-    description: Transform manufacturing with UMH Systems united-manufacturing-hub
+    description: Transform manufacturing with UMH Systems mushroom-iot-hub
       Helm chart, simplifying access to powerful technology for engineers.
     digest: 5e9d30967535a81cf51b9a3a0263bf8c9b3dd880d1c7e31f00c8dbbe0c7b0f51
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.10.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.10.tgz
     version: 0.9.10
   - apiVersion: v2
     appVersion: 0.9.10-hf1
@@ -297,17 +296,17 @@ entries:
       name: console
       repository: https://dl.redpanda.com/public/console/helm/charts/
       version: 0.3.1
-    description: Transform manufacturing with UMH Systems united-manufacturing-hub
+    description: Transform manufacturing with UMH Systems mushroom-iot-hub
       Helm chart, simplifying access to powerful technology for engineers.
     digest: c3947170a8b69099b9eb45ae573a2b4dee9ccf4b3f046b9f4e455b327f783f37
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.10-hf1.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.10-hf1.tgz
     version: 0.9.10-hf1
   - apiVersion: v2
     appVersion: 0.9.9
@@ -349,12 +348,12 @@ entries:
     digest: 05a59f3890862fd716254efd50d6f52fe594fc772bc4acb1a994676de3457406
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.9.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.9.tgz
     version: 0.9.9
   - apiVersion: v2
     appVersion: 0.9.8
@@ -396,12 +395,12 @@ entries:
     digest: 28d372ebe1a6937a33769bd66feab3b3769bc07fdb91c304523fa5a54552f349
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.8.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.8.tgz
     version: 0.9.8
   - apiVersion: v2
     appVersion: 0.9.7
@@ -443,12 +442,12 @@ entries:
     digest: ab808a918b02348e18553ec034fc0ba8fe888edf109c3b68ce3240e9855b026a
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.7.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.7.tgz
     version: 0.9.7
   - apiVersion: v2
     appVersion: 0.9.6
@@ -490,12 +489,12 @@ entries:
     digest: 8c77fa2eb038d7efdeba73682eefee94d193b8976e0710a8bdf222bc2d2b91a6
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.6.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.6.tgz
     version: 0.9.6
   - apiVersion: v2
     appVersion: 0.9.5
@@ -537,12 +536,12 @@ entries:
     digest: 043e070f02d07b180671cdae40bebb6843c577ab59fe0915f96f8ea0c8d98bc0
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.5.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.5.tgz
     version: 0.9.5
   - apiVersion: v2
     appVersion: 0.9.4
@@ -584,12 +583,12 @@ entries:
     digest: 3a70fdcd0367169637e3c68bfbbf92a75bfcfca1c5f4a16545057c089882dcbb
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.4.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.4.tgz
     version: 0.9.4
   - apiVersion: v2
     appVersion: 0.9.3
@@ -627,12 +626,12 @@ entries:
     digest: c8f1a76b221014fd2961a5e40afb33996b4d913acdf9c85d4a6aaf7a56809fe1
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.3.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.3.tgz
     version: 0.9.3
   - apiVersion: v2
     appVersion: 0.9.2
@@ -670,12 +669,12 @@ entries:
     digest: 7ffaf386e245a6b9443b6a720cbb738c2c592d5f283333f00b51cc9cb9a61657
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.2.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.2.tgz
     version: 0.9.2
   - apiVersion: v2
     appVersion: 0.9.1
@@ -713,12 +712,12 @@ entries:
     digest: 9e1b17a156038fc85ceec838b3bc833d856da0ecc861d5811a21c70834cbc51a
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.1.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.1.tgz
     version: 0.9.1
   - apiVersion: v2
     appVersion: 0.9.0
@@ -756,12 +755,12 @@ entries:
     digest: e84a3bbb89b529edc05ce7b1f5064cc26c9d3c74a27c88822381611a03421f3b
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.9.0.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.9.0.tgz
     version: 0.9.0
   - apiVersion: v2
     appVersion: 0.8.7
@@ -799,12 +798,12 @@ entries:
     digest: 2ba5b310d68d72ed8772bdc55402c1eec4ef9df43bcc288b9c4e4511bff9d61e
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.8.7.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.8.7.tgz
     version: 0.8.7
   - apiVersion: v2
     appVersion: 0.8.6
@@ -842,12 +841,12 @@ entries:
     digest: 3f1f2194317f73e2f5218774864d8ab12da12484e0cabc2b86182e9b944af614
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.8.6.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.8.6.tgz
     version: 0.8.6
   - apiVersion: v2
     appVersion: 0.8.5
@@ -885,12 +884,12 @@ entries:
     digest: 0304fb8577e2cd09e25911ba4439b5ef827e771d4b76eac476a7a94cea8e5659
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.8.5.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.8.5.tgz
     version: 0.8.5
   - apiVersion: v2
     appVersion: 0.8.4
@@ -928,12 +927,12 @@ entries:
     digest: a04b90ffd33e8e030e1f9ecad41d6b22433310755ee409ba204bc4ac45b46ad9
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.8.4.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.8.4.tgz
     version: 0.8.4
   - apiVersion: v2
     appVersion: 0.8.3
@@ -971,12 +970,12 @@ entries:
     digest: 6ab964318d8d715922f94250045ec39c8af371a086f6853c5ac78cbd5453324f
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.8.3.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.8.3.tgz
     version: 0.8.3
   - apiVersion: v2
     appVersion: 0.8.2
@@ -1014,12 +1013,12 @@ entries:
     digest: bba01d566e9b8315ca9054726fef3cbc89e4e013dd962c3117570218b633a27d
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.8.2.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.8.2.tgz
     version: 0.8.2
   - apiVersion: v2
     appVersion: 0.8.1
@@ -1057,12 +1056,12 @@ entries:
     digest: 234a90b89aabc0e552aeb8b31011b2fec2b43796b5cffb89757c87554f8f6815
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.8.1.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.8.1.tgz
     version: 0.8.1
   - apiVersion: v2
     appVersion: 0.8.0
@@ -1100,11 +1099,11 @@ entries:
     digest: a143dab63f8f31875766437d9b1f1ab461e1babac067386497a5b945ab17ade9
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
-    name: united-manufacturing-hub
+    name: mushroom-iot-hub
     sources:
-    - https://github.com/united-manufacturing-hub/united-manufacturing-hub
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub
     type: application
     urls:
-    - https://repo.umh.app/united-manufacturing-hub-0.8.0.tgz
+    - https://github.com/mushroom-iot-hub/mushroom-iot-hub-files/blob/main/mushroom-iot-hub-0.8.0.tgz
     version: 0.8.0
 generated: "2023-06-02T15:55:21.0683256+02:00"
