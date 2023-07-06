@@ -3,7 +3,7 @@ entries:
   mushroom-iot-hub:
   - apiVersion: v2
     appVersion: 0.9.14
-    created: "2023-07-05T13:48:28.15260202Z"
+    created: "2023-07-06T12:12:07.23836379Z"
     dependencies:
     - condition: _000_commonConfig.datastorage.enabled
       name: redis
@@ -23,7 +23,7 @@ entries:
       version: 3.0.9
     description: Transform manufacturing with UMH Systems mushroom-iot-hub Helm chart,
       simplifying access to powerful technology for engineers.
-    digest: 1e00fd97544ca28ca69bfb305031a8e3ad74d379724d4291e8f0018af9b3c594
+    digest: a86caa60432f0ea7e3e6798d3d1fe7bc85746d8b060635d6615f665965de3bb5
     home: https://www.umh.app
     icon: https://avatars.githubusercontent.com/u/77492553
     name: mushroom-iot-hub
@@ -33,4 +33,4 @@ entries:
     urls:
     - mushroom-iot-hub-0.9.14.tgz
     version: 0.9.14
-generated: "2023-07-05T13:48:28.129462237Z"
+generated: "2023-07-06T12:12:07.214260474Z"
