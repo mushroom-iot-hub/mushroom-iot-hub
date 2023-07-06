@@ -238,7 +238,7 @@ _001_customMicroservices:
       statefulEnabled: false
   -
     name: cmtester
-    image: ghcr.io/mushroom-iot-hub/custom-microservice-tester:latest
+    image: ghcr.io/united-manufacturing-hub/custom-microservice-tester:latest
     enabled: false
 
     # imagePullPolicy: Always is recommended when using latest tags. Otherwise, please use IfNotPresent
@@ -273,7 +273,7 @@ serviceAccount:
 kafkastatedetector:
   enabled: false
   image:
-    repository: ghcr.io/mushroom-iot-hub/kafkastatedetector
+    repository: ghcr.io/united-manufacturing-hub/kafkastatedetector
     pullPolicy: IfNotPresent
   activityEnabled: true
   anomalyEnabled: true
@@ -281,7 +281,7 @@ kafkastatedetector:
 ### mqttbridge ###
 mqttbridge:
   enabled: false
-  image: ghcr.io/mushroom-iot-hub/mqtt-bridge
+  image: ghcr.io/united-manufacturing-hub/mqtt-bridge
   storageRequest: 1Gi
   resources:
     requests:
@@ -298,7 +298,7 @@ mqttbridge:
 barcodereader:
   enabled: false
   image:
-    repository: ghcr.io/mushroom-iot-hub/barcodereader
+    repository: ghcr.io/united-manufacturing-hub/barcodereader
     pullPolicy: IfNotPresent
   resources:
     requests:
@@ -312,7 +312,7 @@ barcodereader:
 ### sensorconnect ###
 sensorconnect:
   storageRequest: 1Gi
-  image: ghcr.io/mushroom-iot-hub/sensorconnect
+  image: ghcr.io/united-manufacturing-hub/sensorconnect
   ioddfilepath: "/ioddfiles"
   lowerPollingTime: 20 # Fastest time, sensors should be requested to serve data
   upperPollingTime: 1000 # Slowest time, sensors should be requested to serve data
@@ -355,7 +355,7 @@ iotsensorsmqtt:
 
 ### opcuasimulator ###
 opcuasimulator:
-  image: ghcr.io/mushroom-iot-hub/opcuasimulator
+  image: ghcr.io/united-manufacturing-hub/opcuasimulator
   tag: 0.1.0
   resources:
     requests:
@@ -374,11 +374,11 @@ opcuasimulator:
 ### kafkabridge ###
 kafkabridge:
   image:
-    repository: ghcr.io/mushroom-iot-hub/kafka-bridge
+    repository: ghcr.io/united-manufacturing-hub/kafka-bridge
     pullPolicy: IfNotPresent
   # tag: development
   initContainer:
-    repository: ghcr.io/mushroom-iot-hub/kafka-init
+    repository: ghcr.io/united-manufacturing-hub/kafka-init
     pullPolicy: IfNotPresent
 
 ### nodered ###
@@ -642,7 +642,7 @@ nodered:
 factoryinsight:
   enabled: false
   image:
-    repository: ghcr.io/mushroom-iot-hub/factoryinsight
+    repository: ghcr.io/united-manufacturing-hub/factoryinsight
     pullPolicy: IfNotPresent
   # Only specify tag if you want to use a specific version. If not specified the latest stable version is automatically selected
   # tag: 0.3.2
@@ -681,7 +681,7 @@ factoryinput:
   service:
     annotations: {}
   image:
-    repository: ghcr.io/mushroom-iot-hub/factoryinput
+    repository: ghcr.io/united-manufacturing-hub/factoryinput
     pullPolicy: IfNotPresent
   replicas: 1
   storageRequest: 1Gi
@@ -700,7 +700,7 @@ factoryinput:
 grafanaproxy:
   enabled: false
   image:
-    repository: ghcr.io/mushroom-iot-hub/grafana-proxy
+    repository: ghcr.io/united-manufacturing-hub/grafana-proxy
     pullPolicy: IfNotPresent
   replicas: 1
   service:
@@ -722,11 +722,11 @@ grafanaproxy:
 kafkatopostgresql:
   enabled: false
   image:
-    repository: ghcr.io/mushroom-iot-hub/kafka-to-postgresql
+    repository: ghcr.io/united-manufacturing-hub/kafka-to-postgresql
     pullPolicy: IfNotPresent
     # tag: latest
   initContainer:
-    repository: ghcr.io/mushroom-iot-hub/kafka-init
+    repository: ghcr.io/united-manufacturing-hub/kafka-init
     pullPolicy: IfNotPresent
   replicas: 1
   storageRequest: 1Gi
@@ -798,7 +798,7 @@ grafana:
     port: 8080
 
   extraInitContainers:
-    - image: ghcr.io/mushroom-iot-hub/grafana-umh:1.2.1
+    - image: ghcr.io/united-manufacturing-hub/grafana-umh:1.2.1
       name: init-plugins
       imagePullPolicy: IfNotPresent
       command: ['sh', '-c', 'cp -r /plugins /var/lib/grafana/']
@@ -964,7 +964,7 @@ packmlmqttsimulator:
 ### tulip-connector ###
 tulipconnector:
   image:
-    repository: ghcr.io/mushroom-iot-hub/tulip-connector
+    repository: ghcr.io/united-manufacturing-hub/tulip-connector
     pullPolicy: IfNotPresent
     # Only specify tag if you want to use a specific version. If not specified the latest stable version is automatically selected
     tag: 0.1.0
@@ -983,13 +983,13 @@ tulipconnector:
 mqttkafkabridge:
   enabled: false
   image:
-    repository: ghcr.io/mushroom-iot-hub/mqtt-kafka-bridge
+    repository: ghcr.io/united-manufacturing-hub/mqtt-kafka-bridge
     pullPolicy: IfNotPresent
   pdb:
     enabled: true
     minAvailable: 1
   initContainer:
-    repository: ghcr.io/mushroom-iot-hub/kafka-init
+    repository: ghcr.io/united-manufacturing-hub/kafka-init
     pullPolicy: IfNotPresent
   resources:
     requests:
@@ -1011,7 +1011,7 @@ mqttkafkabridge:
 kafkatoblob:
   enabled: false
   image:
-    repository: ghcr.io/mushroom-iot-hub/kafka-to-blob
+    repository: ghcr.io/united-manufacturing-hub/kafka-to-blob
     pullPolicy: IfNotPresent
   replicas: 1
   pdb:
@@ -1104,7 +1104,7 @@ mqtt_broker:
   initContainer:
     hivemqextensioninit:
       image:
-        repository: ghcr.io/mushroom-iot-hub/hivemq-init
+        repository: ghcr.io/united-manufacturing-hub/hivemq-init
         tag: 2.0.0
         pullPolicy: IfNotPresent
   resources:
@@ -1160,7 +1160,7 @@ mqtt_broker:
 
 metrics:
   image:
-    repository: ghcr.io/mushroom-iot-hub/metrics
+    repository: ghcr.io/united-manufacturing-hub/metrics
     pullPolicy: IfNotPresent
     #tag: latest
   cronJob:
