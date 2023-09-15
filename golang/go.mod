@@ -42,7 +42,7 @@ require (
 	github.com/united-manufacturing-hub/Sarama-Kafka-Wrapper v1.10.0
 	github.com/united-manufacturing-hub/umh-utils v0.2.1
 	github.com/zeebo/xxh3 v1.0.2
-	go.uber.org/zap v1.24.0
+	go.uber.org/zap v1.26.0
 	golang.org/x/crypto v0.10.0
 	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
 	gonum.org/v1/gonum v0.13.0
@@ -102,7 +102,6 @@ require (
 	go.elastic.co/ecszap v1.0.1 // indirect
 	go.opentelemetry.io/otel v1.15.1 // indirect
 	go.opentelemetry.io/otel/trace v1.15.1 // indirect
-	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/arch v0.3.0 // indirect
 	golang.org/x/net v0.10.0 // indirect
